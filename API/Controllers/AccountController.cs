@@ -11,6 +11,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using EmailService;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace API.Controllers
 {
@@ -25,6 +26,7 @@ namespace API.Controllers
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
                         ITokenService tokenService, IMapper mapper, IEmailSender emailSender)
         {
+            
             _emailSender = emailSender;
             _mapper = mapper;
             _tokenService = tokenService;

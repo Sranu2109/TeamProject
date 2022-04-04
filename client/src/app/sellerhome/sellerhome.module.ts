@@ -4,6 +4,7 @@ import { SellerhomeComponent } from './sellerhome.component';
 import { SharedModule } from '../shared/shared.module';
 import { UploadImageComponent } from '../upload-image/upload-image.component';
 import { ExcelsheetComponent } from '../excelsheet/excelsheet.component';
+import { SellerinvoiceComponent } from '../sellerinvoice/sellerinvoice.component';
 
 
 
@@ -11,7 +12,8 @@ import { ExcelsheetComponent } from '../excelsheet/excelsheet.component';
   declarations: [
     SellerhomeComponent,
     UploadImageComponent,
-    ExcelsheetComponent
+    ExcelsheetComponent,
+    SellerinvoiceComponent
   ],
   imports: [
     CommonModule,

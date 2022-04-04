@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20220309184607_PostGres initial")]
+    [Migration("20220322133232_PostGres initial")]
     partial class PostGresinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,6 +199,40 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductTypes");
+                });
+
+            modelBuilder.Entity("core.Entities.sellerinvoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<long>("OrderDate")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("imageurl")
+                        .HasColumnType("text");
+
+                    b.Property<int>("productid")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("productname")
+                        .HasColumnType("text");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("sellername")
+                        .HasColumnType("text");
+
+                    b.Property<int>("totalprice")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("sellerinvoices");
                 });
 
             modelBuilder.Entity("Core.Entities.SellerProductlist", b =>

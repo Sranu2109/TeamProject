@@ -32,8 +32,10 @@ namespace API.Controllers
         }
         
         [HttpPost("ProductUpload")]
-        public async Task<List<Product>> ProductUpload(IFormFile file, List<IFormFile> files, UserManager<AppSeller> userManager)
+        public async Task<List<Product>> ProductUpload()
+        // List<IFormFile> files, UserManager<AppSeller> userManager)
         {
+            var file = Request.Form.Files[0];
             var list=new List<Product>();
             using(var stream = new MemoryStream())
             {
@@ -67,9 +69,10 @@ namespace API.Controllers
               await  _context.Products.AddAsync(x);
               await _context.SaveChangesAsync();
               var seller=new SellerProductlist();
-              seller.Id=x.Id;
+             // seller.Id=x.Id;
               seller.productid=x.Id;
              // seller.sellername= await userManager.FindByNameAsync(string user);
+             seller.sellername = Request.Form["hritik"];
               await _context.productlists.AddAsync(seller);
               await _context.SaveChangesAsync();
             }

@@ -5,7 +5,7 @@
     <a class="p-3" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
     <a class="p-3" routerLink="/shop" routerLinkActive="active">Shop</a>
     <a class="p-3" routerLink="/help/about-us" routerLinkActive="active">About Us</a>
-    <a class="p-3" routerLink="/help/contact" routerLinkActive="active">Contact</a>
+    <a class="p-3" routerLink="/help/contact" routerLinkActive="active">Contact Us</a>
     <a *ngIf="(currentSeller$ | async) as seller" class="p-3" routerLink="/test-error" routerLinkActive="active">Errors</a>
     <a *ngIf="(currentSeller$ | async) as seller" class="p-3" routerLink="/sellerhome" routerLinkActive="active">Seller</a>
   </nav>

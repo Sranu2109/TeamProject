@@ -79,6 +79,25 @@ namespace Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "sellerinvoices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    productid = table.Column<int>(type: "integer", nullable: false),
+                    sellername = table.Column<string>(type: "text", nullable: true),
+                    quantity = table.Column<int>(type: "integer", nullable: false),
+                    totalprice = table.Column<int>(type: "integer", nullable: false),
+                    imageurl = table.Column<string>(type: "text", nullable: true),
+                    productname = table.Column<string>(type: "text", nullable: true),
+                    OrderDate = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_sellerinvoices", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -205,6 +224,9 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "sellerinvoices");
 
             migrationBuilder.DropTable(
                 name: "Orders");

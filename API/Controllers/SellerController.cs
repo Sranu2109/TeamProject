@@ -7,6 +7,7 @@ using Core.Entities.SellerIdentity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace API.Controllers
 {
@@ -18,9 +19,11 @@ namespace API.Controllers
 
         public SellerController(UserManager<AppSeller> userManager, SignInManager<AppSeller> signInManager, ISellerTokenService sellerTokenService)
         {
+            
             _sellerTokenService = sellerTokenService;
             _signInManager = signInManager;
             _userManager = userManager;
+
 
         }
 
@@ -38,15 +41,6 @@ namespace API.Controllers
                 Token = _sellerTokenService.CreateToken(seller)
             };
 
-
-            // var seller = await _userManager.FindByEmailClaimsPrinciple(HttpContent.User);
-            // return new SellerDto
-            // {
-            //     Email = seller.Email,
-            //     SellerName = seller.SellerName,
-            //   //  Token = _tokenService.CreateToken(user)
-
-            // };
         }
 
         [HttpGet("emailexists")]

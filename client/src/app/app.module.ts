@@ -13,6 +13,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { SellerhomeModule } from './sellerhome/sellerhome.module';
+import { SellerinvoiceComponent } from './sellerinvoice/sellerinvoice.component';
 
 @NgModule({
   declarations: [

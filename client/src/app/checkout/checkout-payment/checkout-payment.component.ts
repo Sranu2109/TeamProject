@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
@@ -18,7 +19,7 @@ export class CheckoutPaymentComponent implements OnInit{
   @Input() checkoutForm: FormGroup;
 
 
-  constructor(private basketService: BasketService, private checkoutService: CheckoutService,
+  constructor(private http:HttpClient, private basketService: BasketService, private checkoutService: CheckoutService,
     private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(){
@@ -28,6 +29,38 @@ export class CheckoutPaymentComponent implements OnInit{
   submitOrder() {
     const basket = this.basketService.getCurrentBasketValue();
     const orderToCreate = this.getOrderToCreate(basket);
+    for(var i=0;i<basket.items.length;i++)
+
+    {
+
+          var id1 = basket.items[i].id;
+
+          var q1 =basket.items[i].quantity;
+
+          var image = basket.items[i].pictureUrl;
+
+          var proname = basket.items[i].productName;
+
+          var price = q1*basket.items[i].price;
+
+          const formData = new FormData();
+
+          formData.append("hhh",id1.toString());
+
+          formData.append("quantity",q1.toString());
+
+          formData.append("totalprice", price.toString());
+
+          formData.append("imageurl",image);
+
+          formData.append("proname",proname);
+
+
+
+
+    this.http.post('https://localhost:5001/api/Basket/Ranu',formData, {reportProgress: true, observe: 'events'}).subscribe();
+
+    }
     this.checkoutService.createOrder(orderToCreate).subscribe((order: IOrder) => {
       this.toastr.success('Order Created Successfully');
       this.basketService.deleteLocalBasket(basket.id);

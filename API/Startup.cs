@@ -35,9 +35,10 @@ namespace API
             services.AddScoped<IEmailSender, EmailSender>();
 
             services.AddControllers();          //service to add controllers
+            services.AddMemoryCache();
 
             services.AddDbContext<StoreContext>( x => 
-                    x.UseNpgsql(_config.GetConnectionString("DefaultConnection")));
+                    x.UseNpgsql(_config.GetConnectionString("DefaultConnection")));  //pass name of the connection string
 
             services.AddDbContext<AppIdentityDbContext> (x =>
             {
@@ -86,9 +87,9 @@ namespace API
 
             app.UseStatusCodePagesWithReExecute("/errors/{0}");    //middeleware for not found endpoint error handler
 
-            app.UseHttpsRedirection();     //middleware
+            app.UseHttpsRedirection();     //middleware, if we accidentally went to 'http' url then it will redirect us to 'https'
 
-            app.UseRouting();              //middleware
+            app.UseRouting();              //middleware, 
             app.UseStaticFiles();
 
             app.UseStaticFiles(new StaticFileOptions

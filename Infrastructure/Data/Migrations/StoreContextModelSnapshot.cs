@@ -199,6 +199,40 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("ProductTypes");
                 });
 
+            modelBuilder.Entity("core.Entities.sellerinvoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<long>("OrderDate")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("imageurl")
+                        .HasColumnType("text");
+
+                    b.Property<int>("productid")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("productname")
+                        .HasColumnType("text");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("sellername")
+                        .HasColumnType("text");
+
+                    b.Property<int>("totalprice")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("sellerinvoices");
+                });
+
             modelBuilder.Entity("Core.Entities.SellerProductlist", b =>
                 {
                     b.Property<int>("Id")

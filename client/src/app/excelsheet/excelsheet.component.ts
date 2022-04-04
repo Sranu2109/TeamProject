@@ -23,9 +23,19 @@ export class ExcelsheetComponent implements OnInit {
       return;
     }
     
+    // let fileToUpload = <File>files[0];
+    // const formData = new FormData();
+    // formData.append('file', fileToUpload, fileToUpload.name);
+    const email = localStorage.getItem('email');
+    console.log(email);
+
     let fileToUpload = <File>files[0];
+
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
+
+    formData.append('excel', fileToUpload, fileToUpload.name);
+
+    formData.append("hritik",email);
     
     this.http.post('https://localhost:5001/ProductUpload', formData, {reportProgress: true, observe: 'events'})
    // this.http.get('https://localhost:5001/hritik', {reportProgress: true, observe: 'events'})

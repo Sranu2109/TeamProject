@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     // [ApiController]
-    // [Route("api/[controller]")]        //adding api/is optional but is conventional
-    public class ProductsController : BaseApiController
+    // [Route("api/[controller]")]        //adding api/ is optional but is conventional
+    public class ProductsController : BaseApiController     //methods can be accessed outside of this class because its a controller its need to be derived from controllerbase
     {
         private readonly IGenericRepository<Product> _productsRepo;
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
@@ -32,7 +32,7 @@ namespace API.Controllers
         [HttpGet]         //adding endpoints
         //public string GetProducts()          //adding methods
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
-            [FromQuery]ProductSpecParams productParams)    //using asynchronus version of this method as this request can take tens of seconds
+            [FromQuery]ProductSpecParams productParams)    //using asynchronus version of this method as this request can take tens of seconds, makes our app. more scalable
         {
             var spec = new ProductsWithTypesBrandsAndCategoriesSpecification(productParams);
 

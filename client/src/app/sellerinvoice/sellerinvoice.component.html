@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h4><strong>Products sold :</strong></h4>
+            <table class="table table-hover" style="cursor: pointer;">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="border-0 bg-light">
+                            <div class="p-1 text-uppercase">Product</div>
+                          </th>
+                        <th>Date</th>
+                        <th>quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <!-- alt="{{item.productName}}"-->
+                <tbody>
+                    <tr *ngFor="let order of invoice" >
+                        <th scope="row">
+                            <div class="p-2">
+                              <img src= {{order.imageurl}}
+                              class="img-fluid"
+                                style="max-height: 50px"/>
+                              <div class="ml-3 d-inline-block align-middle">
+                                <h5 class="mb-0">{{order.productname}}</h5>
+                              </div>
+                            </div>
+                           </th>
+                       
+                        <td>{{order.orderDate | date: 'medium'}}</td>
+                        <td>{{order.quantity }}</td>
+                        <td>{{order.totalprice | currency: 'INR'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

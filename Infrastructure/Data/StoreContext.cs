@@ -1,5 +1,6 @@
 
 using System.Reflection;
+using core.Entities;
 using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,8 @@ namespace Infrastructure.Data
 {
     public class StoreContext : DbContext     //after installing nuget package manager for entityframework for sqlite
     {
-        public StoreContext(DbContextOptions<StoreContext> options) : base(options)
+        //DbContextOptions of type StoreContext i.e name of the class
+        public StoreContext(DbContextOptions<StoreContext> options) : base(options)   //constructor to provide options i.e connection string derived from its parent class i.e dbContext [base(options)]
         {
         }
 
@@ -22,6 +24,8 @@ namespace Infrastructure.Data
         public DbSet<OrderItem> OrderItems { get; set; }   //databse of orderItems
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }    //database of deliveryMethods
         public DbSet<SellerProductlist> productlists {get;set;}   // database for the seller with its product info
+
+        public DbSet<sellerinvoice> sellerinvoices{get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)   //method
         {
