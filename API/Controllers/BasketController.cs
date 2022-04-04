@@ -22,7 +22,7 @@ namespace API.Controllers
             _basketRepository = basketRepository;
         }
 
-        [HttpGet("invoice")]
+        [HttpGet("invoice")]      //endpoint
         public async Task<ActionResult<List<sellerinvoice>>> sellerinvoice(string name)
         {
           var list = await _context.sellerinvoices.ToListAsync();

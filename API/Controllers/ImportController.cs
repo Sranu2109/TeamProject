@@ -23,7 +23,7 @@ namespace API.Controllers
 
         public ImportController(IGenericRepository<SellerProductlist> sellerproductrepo, StoreContext context, IWebHostEnvironment webHostEnvironment, IConfiguration config, UserManager<AppSeller> userManager)
         {
-            _config = config;
+            _config = config; 
             _sellerproductrepo = sellerproductrepo;
             _webHostEnvironment = webHostEnvironment;
             _context = context;

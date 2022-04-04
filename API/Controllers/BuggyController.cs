@@ -21,7 +21,7 @@ namespace API.Controllers
         }
 
         [HttpGet("notfound")]
-        public ActionResult GetNotFoundRequest()     //method
+        public ActionResult GetNotFoundRequest()     //method 
         {
             var thing = _context.Products.Find(42);
 

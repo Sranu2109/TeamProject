@@ -7,7 +7,7 @@ namespace API.Controllers
     [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorController : BaseApiController
     {
-        public IActionResult Error(int code)   //method for not found endpoint error handler
+        public IActionResult Error(int code)   //method for not found endpoint error handler 
         {
             return new ObjectResult(new ApiResponse(code));
         }
